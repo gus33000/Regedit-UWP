@@ -1,0 +1,400 @@
+﻿<Page
+    x:Class="Regedit.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Regedit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:interactivity="using:Microsoft.Xaml.Interactivity" xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="AppTitleBar" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+            <!-- Width of the padding columns is set in LayoutMetricsChanged handler. -->
+            <!-- Using padding columns instead of Margin ensures that the background
+                 paints the area under the caption control buttons (for transparent buttons). -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="Assets/Square44x44Logo.png" 
+                   Grid.Column="1" HorizontalAlignment="Left" 
+                   Width="20" Height="20" Margin="12,0"/>
+            <TextBlock Text="Universal Registry Editor" 
+                       Grid.Column="1" 
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       Margin="44,8,0,0"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <controls:Menu Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}"
+                       AllowTooltip="False"
+                       Orientation="Horizontal"
+                       TooltipPlacement="Bottom">
+                <controls:MenuItem controls:Menu.InputGestureText="Alt+F" Header="^File">
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+I" Text="Import...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="I" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+E" Text="Export...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="E" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+L" Text="Load Hive..." IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="L" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+U" Text="Unload Hive..." IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="U" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+C" Text="Connect Network Registry...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="C" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+D" Text="Disconnect Network Registry..." IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="D" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+P" Text="Print...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="P" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+X" Text="Exit">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="X" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </controls:MenuItem>
+
+                <controls:MenuItem controls:Menu.InputGestureText="Alt+E" Header="^Edit">
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+M" Text="Modify..." FontWeight="Bold" IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="M" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+B" Text="Modify Binary Data...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="B" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutSubItem controls:Menu.InputGestureText="Ctrl+N" Text="New">
+                        <MenuFlyoutSubItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="N" Modifiers="Control"/>
+                        </MenuFlyoutSubItem.KeyboardAccelerators>
+                        <MenuFlyoutSubItem.Items>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+K" Text="Key">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="K" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator/>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+S" Text="String Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="S" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+B" Text="Binary Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="B" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+D" Text="DWORD (32-bit) Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="D" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+Q" Text="QWORD (64-bit) Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Q" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+M" Text="Multi-String Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="M" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+E" Text="Expandable String Value">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="E" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                        </MenuFlyoutSubItem.Items>
+                    </MenuFlyoutSubItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+P" Text="Permissions...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="P" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+D" Text="Delete" IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="Delete" Modifiers="None"/>
+                            <KeyboardAccelerator Key="D" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+R" Text="Rename" IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="R" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+C" Text="Copy Key Name">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="C" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+F" Text="Find...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+X" Text="Find Next">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F3" Modifiers="None"/>
+                            <KeyboardAccelerator Key="X" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </controls:MenuItem>
+
+                <controls:MenuItem controls:Menu.InputGestureText="Alt+V" Header="^View">
+                    <ToggleMenuFlyoutItem controls:Menu.InputGestureText="Ctrl+B" Text="Address Bar" IsChecked="True">
+                        <ToggleMenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="B" Modifiers="Control"/>
+                        </ToggleMenuFlyoutItem.KeyboardAccelerators>
+                    </ToggleMenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+L" Text="Split">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="L" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                     </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+D" Text="Display Binary Data..." IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="D" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+R" Text="Refresh">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F5" Modifiers="None"/>
+                            <KeyboardAccelerator Key="R" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+F" Text="Font">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </controls:MenuItem>
+
+                <controls:MenuItem controls:Menu.InputGestureText="Alt+A" Header="F^avorites">
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+A" Text="Add to Favorites...">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="A" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+R" Text="Remove Favorite..." IsEnabled="False">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="R" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </controls:MenuItem>
+
+                <controls:MenuItem controls:Menu.InputGestureText="Alt+H" Header="^Help">
+                    <MenuFlyoutItem controls:Menu.InputGestureText="Ctrl+A" Text="About Registry Editor..." Click="MenuFlyoutItem_Click">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="A" Modifiers="Control"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </controls:MenuItem>
+            </controls:Menu>
+
+            <TextBox x:Name="PathTextBox" Grid.Row="1" Grid.ColumnSpan="2" Text="Computer"/>
+
+            <ScrollViewer Margin="0,0,8,0" Grid.Row="2" Grid.Column="0" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+                <TreeView Name="RegistryTree"
+                      SelectionMode="Single"
+                      ItemInvoked="RegistryTree_ItemInvoked"
+                      Expanding="RegistryTree_Expanding"
+                      ItemsSource="{x:Bind DataSource}">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Item">
+                            <TreeViewItem IsExpanded="{x:Bind Expanded}" 
+                                      IsSelected="{x:Bind Expanded, Mode=OneTime}"
+                                      ItemsSource="{x:Bind Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="20" Source="{x:Bind Image}"/>
+                                    <TextBlock Margin="12,0,24,0" Text="{x:Bind Name}"/>
+                                </StackPanel>
+                            </TreeViewItem>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </ScrollViewer>
+
+            <ScrollViewer Margin="8,0,0,0" Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="IconColumn" Width="32"/>
+                        <ColumnDefinition x:Name="NameColumn" Width="*"/>
+                        <ColumnDefinition x:Name="TypeColumn" Width="*"/>
+                        <ColumnDefinition x:Name="DataColumn" Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock VerticalAlignment="Center" Margin="12" Text="Name" Grid.Column="1"/>
+                    <TextBlock VerticalAlignment="Center" Margin="12" Text="Type" Grid.Column="2"/>
+                    <TextBlock VerticalAlignment="Center" Margin="12" Text="Data" Grid.Column="3"/>
+
+                    <ListView x:Name="ValueIconListView" ItemsSource="{x:Bind ValueListView.ItemsSource, Mode=OneWay}" SelectionMode="None" Grid.Column="0" Grid.Row="1">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Padding" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ValueItem">
+                                <Grid>
+                                    <Image Source="{x:Bind Image}" Margin="10,0,6,0" Width="20" Height="20" Stretch="UniformToFill"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <ListView x:Name="ValueListView" Grid.Column="1" Grid.Row="1">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ValueItem">
+                                <Grid>
+                                    <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <ListView x:Name="ValueTypeListView" ItemsSource="{x:Bind ValueListView.ItemsSource, Mode=OneWay}" SelectionMode="None" Grid.Column="2" Grid.Row="1">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ValueItem">
+                                <Grid>
+                                    <TextBlock Text="{x:Bind Type}" TextTrimming="CharacterEllipsis"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <ListView x:Name="ValueDataListView" ItemsSource="{x:Bind ValueListView.ItemsSource, Mode=OneWay}" SelectionMode="None" Grid.Column="3" Grid.Row="1">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ValueItem">
+                                <Grid>
+                                    <TextBlock Text="{x:Bind Data}" TextTrimming="CharacterEllipsis"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <controls:GridSplitter
+            GripperCursor="Default"
+            HorizontalAlignment="Left"
+            Grid.Column="2"
+            Background="Transparent"
+            GripperForeground="{ThemeResource ApplicationForegroundThemeBrush}"
+            ResizeDirection="Auto"
+            ResizeBehavior="BasedOnAlignment"
+            CursorBehavior="ChangeOnSplitterHover"
+            Width="16">
+                        <controls:GridSplitter.RenderTransform>
+                            <TranslateTransform X="-8" />
+                        </controls:GridSplitter.RenderTransform>
+                    </controls:GridSplitter>
+
+                    <controls:GridSplitter
+            GripperCursor="Default"
+            HorizontalAlignment="Left"
+            Grid.Column="3"
+            Background="Transparent"
+            GripperForeground="{ThemeResource ApplicationForegroundThemeBrush}"
+            ResizeDirection="Auto"
+            ResizeBehavior="BasedOnAlignment"
+            CursorBehavior="ChangeOnSplitterHover"
+            Width="16">
+                        <controls:GridSplitter.RenderTransform>
+                            <TranslateTransform X="-8" />
+                        </controls:GridSplitter.RenderTransform>
+                    </controls:GridSplitter>
+                </Grid>
+            </ScrollViewer>
+            
+            <controls:GridSplitter GripperCursor="Default"
+                                   HorizontalAlignment="Left"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   Background="{ThemeResource SystemChromeLowColor}"
+                                   GripperForeground="{ThemeResource ApplicationForegroundThemeBrush}"
+                                   ResizeDirection="Auto"
+                                   ResizeBehavior="BasedOnAlignment"
+                                   CursorBehavior="ChangeOnSplitterHover"
+                                   Width="16">
+                <controls:GridSplitter.RenderTransform>
+                    <TranslateTransform X="-8" />
+                </controls:GridSplitter.RenderTransform>
+
+            </controls:GridSplitter>
+        </Grid>
+    </Grid>
+</Page>
