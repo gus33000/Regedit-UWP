@@ -1,39 +1,41 @@
-﻿<ContentDialog
-    x:Class="Regedit.AboutContentDialog"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Regedit"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    CornerRadius="4"
-    mc:Ignorable="d">
+﻿<ContentDialog x:Class="Regedit.AboutContentDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="using:Regedit"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               PrimaryButtonText="Ok"
+               mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock Text="About Universal Registry Editor" TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}" />
-        <Image Margin="64,22,64,0" Source="Assets/win10.png"/>
-        <Rectangle Margin="0,16" Fill="{ThemeResource SystemChromeLowColor}" Height="2"/>
+        <TextBlock Style="{StaticResource CaptionTextBlockStyle}"
+                   Text="About Universal Registry Editor"
+                   TextWrapping="Wrap" />
         <Grid Margin="0,16">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Image VerticalAlignment="Top" Source="Assets/StoreLogo.png" Width="40"/>
-            <StackPanel Margin="16,0,0,0" Grid.Column="1">
-                <TextBlock Text="Microsoft Windows"/>
-                <TextBlock x:Name="VersionText" Text="Version 2004 (OS Build 19569.1000)"/>
-                <TextBlock Text="© 2020 Microsoft Corporation. All rights reserved."/>
-                <TextBlock Text=""/>
-                <TextBlock x:Name="CopyrightText" Text="The Windows 10 Insider Preview operating system and its user interface are protected by trademark and other pending or existing intellectual property rights in the United States and other countries/regions" TextWrapping="Wrap"/>
-                <TextBlock Text=""/>
-                <TextBlock Text=""/>
-                <TextBlock Text=""/>
-                <TextBlock Text="This product is licensed under the Microsoft Software License Terms to:" TextWrapping="Wrap"/>
-                <TextBlock x:Name="RegisteredOwner" Text="    Regedit User"/>
-                <TextBlock x:Name="RegisteredOrg" Text="    N/A"/>
-                <TextBlock Text=""/>
-                <TextBlock Text=""/>
+            <Image Width="40"
+                   VerticalAlignment="Top"
+                   Source="Assets/StoreLogo.png" />
+            <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                <TextBlock Text="Interop Tools Project" />
+                <TextBlock x:Name="VersionText" Text="Version 2106 (Build 1.0)" />
+                <TextBlock Text="© 2020-2021 Gustave Monce and contributors. All rights reserved." />
+                <TextBlock Text="" />
+                <TextBlock x:Name="CopyrightText"
+                           Text="The Universal Registry Editor application and its user interface are available on https://github.com/gus33000/Regedit-UWP"
+                           TextWrapping="Wrap" />
+                <TextBlock Text="" />
+                <TextBlock Text="" />
+                <TextBlock Text="" />
+                <TextBlock Text="This product is licensed under the MIT license terms to:" TextWrapping="Wrap" />
+                <TextBlock x:Name="RegisteredOwner" Text="    Regedit User" />
+                <TextBlock x:Name="RegisteredOrg" Text="    N/A" />
+                <TextBlock Text="" />
+                <TextBlock Text="" />
             </StackPanel>
         </Grid>
-        <Button x:Name="OkButton" Content="OK" MinWidth="110" Click="OkButton_Click" HorizontalAlignment="Right"/>
     </StackPanel>
 </ContentDialog>

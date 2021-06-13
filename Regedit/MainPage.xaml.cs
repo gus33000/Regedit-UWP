@@ -302,7 +302,7 @@ namespace Regedit
             byte[] buf;
             uint vtype;
             registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "BuildLabEx", out vtype, out buf);
-            var vers = string.Join(".", System.Text.Encoding.Unicode.GetString(buf).Split(".").Take(2));
+            var vers = string.Join(".", System.Text.Encoding.Unicode.GetString(buf).Split('.').Take(2));
             registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", out vtype, out buf);
             var osversion = System.Text.Encoding.Unicode.GetString(buf);
             registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName", out vtype, out buf);
