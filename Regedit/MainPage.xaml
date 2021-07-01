@@ -201,7 +201,7 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Rename">
                         <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE74D;"/>
+                            <FontIcon Glyph="&#xE8AC;"/>
                         </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
