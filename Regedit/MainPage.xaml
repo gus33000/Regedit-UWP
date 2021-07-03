@@ -57,11 +57,17 @@
                         <KeyboardAccelerator Key="F" Modifiers="Menu" />
                     </muxc:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Text="Import...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8B5;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="I" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Export...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xEDE1;"/>
+                        </MenuFlyoutItem.Icon>                        
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="E" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -90,12 +96,18 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Print...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE749;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="P" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Exit">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8BB;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="X" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -109,6 +121,9 @@
                     <MenuFlyoutItem FontWeight="Bold"
                                     IsEnabled="False"
                                     Text="Modify...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE70F;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="M" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -120,6 +135,9 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutSubItem Text="New">
+                        <MenuFlyoutSubItem.Icon>
+                            <FontIcon Glyph="&#xE710;"/>
+                        </MenuFlyoutSubItem.Icon>
                         <MenuFlyoutSubItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="N" Modifiers="Control" />
                         </MenuFlyoutSubItem.KeyboardAccelerators>
@@ -164,35 +182,53 @@
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Permissions...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8D7;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="P" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem IsEnabled="False" Text="Delete">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE74D;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="Delete" Modifiers="None" />
                             <KeyboardAccelerator Key="D" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Rename">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8AC;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Copy Key Name">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8C8;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="C" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Find...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE721;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Find Next">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE893;"/>
+                        </MenuFlyoutItem.Icon>                        
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F3" Modifiers="None" />
                             <KeyboardAccelerator Key="X" Modifiers="Control" />
@@ -205,6 +241,9 @@
                         <KeyboardAccelerator Key="V" Modifiers="Menu" />
                     </muxc:MenuBarItem.KeyboardAccelerators>
                     <ToggleMenuFlyoutItem IsChecked="True" Text="Address Bar">
+                        <ToggleMenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE718;"/>
+                        </ToggleMenuFlyoutItem.Icon>
                         <ToggleMenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
                         </ToggleMenuFlyoutItem.KeyboardAccelerators>
@@ -223,12 +262,18 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Refresh">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE72C;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F5" Modifiers="None" />
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Font">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8D2;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -240,11 +285,17 @@
                         <KeyboardAccelerator Key="A" Modifiers="Menu" />
                     </muxc:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Text="Add to Favorites...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE735;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="A" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Remove Favorite...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE8D9;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -256,6 +307,9 @@
                         <KeyboardAccelerator Key="H" Modifiers="Menu" />
                     </muxc:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="About Registry Editor...">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="&#xE897;"/>
+                        </MenuFlyoutItem.Icon>
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="A" Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
