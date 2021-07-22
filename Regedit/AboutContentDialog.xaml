@@ -5,37 +5,34 @@
                xmlns:local="using:Regedit"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                PrimaryButtonText="Ok"
+               Style="{StaticResource DefaultContentDialogStyle}"
+               Title="About Universal Registry Editor"
                mc:Ignorable="d">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource CaptionTextBlockStyle}"
-                   Text="About Universal Registry Editor"
-                   TextWrapping="Wrap" />
-        <Grid Margin="0,16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Image Width="40"
+    <Grid Margin="0,16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Width="40"
                    VerticalAlignment="Top"
                    Source="Assets/StoreLogo.png" />
-            <StackPanel Grid.Column="1" Margin="16,0,0,0">
-                <TextBlock Text="Interop Tools Project" />
-                <TextBlock x:Name="VersionText" Text="Version 2106 (Build 1.0)" />
-                <TextBlock Text="© 2020-2021 Gustave Monce and contributors. All rights reserved." />
-                <TextBlock Text="" />
-                <TextBlock x:Name="CopyrightText"
+        <StackPanel Grid.Column="1" Margin="16,0,0,0">
+            <TextBlock Text="Interop Tools Project" />
+            <TextBlock x:Name="VersionText" Text="Version 2106 (Build 1.0)" />
+            <TextBlock Text="© 2020-2021 Gustave Monce and contributors. All rights reserved." />
+            <TextBlock Text="" />
+            <TextBlock x:Name="CopyrightText"
                            Text="The Universal Registry Editor application and its user interface are available on https://github.com/gus33000/Regedit-UWP"
                            TextWrapping="Wrap" />
-                <TextBlock Text="" />
-                <TextBlock Text="" />
-                <TextBlock Text="" />
-                <TextBlock Text="This product is licensed under the MIT license terms to:" TextWrapping="Wrap" />
-                <TextBlock x:Name="RegisteredOwner" Text="    Regedit User" />
-                <TextBlock x:Name="RegisteredOrg" Text="    N/A" />
-                <TextBlock Text="" />
-                <TextBlock Text="" />
-            </StackPanel>
-        </Grid>
-    </StackPanel>
+            <TextBlock Text="" />
+            <TextBlock Text="" />
+            <TextBlock Text="" />
+            <TextBlock Text="This product is licensed under the MIT license terms to:" TextWrapping="Wrap" />
+            <TextBlock x:Name="RegisteredOwner" Text="    Regedit User" />
+            <TextBlock x:Name="RegisteredOrg" Text="    N/A" />
+            <TextBlock Text="" />
+            <TextBlock Text="" />
+        </StackPanel>
+    </Grid>
 </ContentDialog>

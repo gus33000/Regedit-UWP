@@ -24,15 +24,15 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private bool SetColumnWidth(ColumnDefinition columnDefinition, double horizontalChange, GridUnitType unitType)
         {
-            var newWidth = columnDefinition.ActualWidth + horizontalChange;
+            double newWidth = columnDefinition.ActualWidth + horizontalChange;
 
-            var minWidth = columnDefinition.MinWidth;
+            double minWidth = columnDefinition.MinWidth;
             if (!double.IsNaN(minWidth) && newWidth < minWidth)
             {
                 newWidth = minWidth;
             }
 
-            var maxWidth = columnDefinition.MaxWidth;
+            double maxWidth = columnDefinition.MaxWidth;
             if (!double.IsNaN(maxWidth) && newWidth > maxWidth)
             {
                 newWidth = maxWidth;
@@ -49,15 +49,15 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private bool IsValidColumnWidth(ColumnDefinition columnDefinition, double horizontalChange)
         {
-            var newWidth = columnDefinition.ActualWidth + horizontalChange;
+            double newWidth = columnDefinition.ActualWidth + horizontalChange;
 
-            var minWidth = columnDefinition.MinWidth;
+            double minWidth = columnDefinition.MinWidth;
             if (!double.IsNaN(minWidth) && newWidth < minWidth)
             {
                 return false;
             }
 
-            var maxWidth = columnDefinition.MaxWidth;
+            double maxWidth = columnDefinition.MaxWidth;
             if (!double.IsNaN(maxWidth) && newWidth > maxWidth)
             {
                 return false;
@@ -73,15 +73,15 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private bool SetRowHeight(RowDefinition rowDefinition, double verticalChange, GridUnitType unitType)
         {
-            var newHeight = rowDefinition.ActualHeight + verticalChange;
+            double newHeight = rowDefinition.ActualHeight + verticalChange;
 
-            var minHeight = rowDefinition.MinHeight;
+            double minHeight = rowDefinition.MinHeight;
             if (!double.IsNaN(minHeight) && newHeight < minHeight)
             {
                 newHeight = minHeight;
             }
 
-            var maxWidth = rowDefinition.MaxHeight;
+            double maxWidth = rowDefinition.MaxHeight;
             if (!double.IsNaN(maxWidth) && newHeight > maxWidth)
             {
                 newHeight = maxWidth;
@@ -98,15 +98,15 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private bool IsValidRowHeight(RowDefinition rowDefinition, double verticalChange)
         {
-            var newHeight = rowDefinition.ActualHeight + verticalChange;
+            double newHeight = rowDefinition.ActualHeight + verticalChange;
 
-            var minHeight = rowDefinition.MinHeight;
+            double minHeight = rowDefinition.MinHeight;
             if (!double.IsNaN(minHeight) && newHeight < minHeight)
             {
                 return false;
             }
 
-            var maxHeight = rowDefinition.MaxHeight;
+            double maxHeight = rowDefinition.MaxHeight;
             if (!double.IsNaN(maxHeight) && newHeight > maxHeight)
             {
                 return false;
@@ -123,28 +123,28 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         // Return the targeted Column based on the resize behavior
         private int GetTargetedColumn()
         {
-            var currentIndex = Grid.GetColumn(TargetControl);
+            int currentIndex = Grid.GetColumn(TargetControl);
             return GetTargetIndex(currentIndex);
         }
 
         // Return the sibling Row based on the resize behavior
         private int GetTargetedRow()
         {
-            var currentIndex = Grid.GetRow(TargetControl);
+            int currentIndex = Grid.GetRow(TargetControl);
             return GetTargetIndex(currentIndex);
         }
 
         // Return the sibling Column based on the resize behavior
         private int GetSiblingColumn()
         {
-            var currentIndex = Grid.GetColumn(TargetControl);
+            int currentIndex = Grid.GetColumn(TargetControl);
             return GetSiblingIndex(currentIndex);
         }
 
         // Return the sibling Row based on the resize behavior
         private int GetSiblingRow()
         {
-            var currentIndex = Grid.GetRow(TargetControl);
+            int currentIndex = Grid.GetRow(TargetControl);
             return GetSiblingIndex(currentIndex);
         }
 

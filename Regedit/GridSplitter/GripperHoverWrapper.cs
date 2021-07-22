@@ -116,7 +116,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
             else
             {
-                var coreCursor = (CoreCursorType)((int)_gripperCursor);
+                CoreCursorType coreCursor = (CoreCursorType)((int)_gripperCursor);
                 if (_gripperCursor == GridSplitter.GripperCursorType.Custom)
                 {
                     if (_gripperCustomCursorResource > GridSplitter.GripperCustomCursorDefaultResource)
@@ -133,8 +133,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         internal void SplitterManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
-            var splitter = sender as GridSplitter;
-            if (splitter == null)
+            if (sender is not GridSplitter splitter)
             {
                 return;
             }
@@ -145,8 +144,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         internal void SplitterManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            var splitter = sender as GridSplitter;
-            if (splitter == null)
+            if (sender is not GridSplitter splitter)
             {
                 return;
             }

@@ -4,7 +4,6 @@
 
 using Windows.UI.Core;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls
@@ -172,7 +171,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private static void OnGripperForegroundPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var gridSplitter = (GridSplitter)d;
+            GridSplitter gridSplitter = (GridSplitter)d;
 
             if (gridSplitter._gripperDisplay == null)
             {
@@ -184,7 +183,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private static void OnGripperCursorPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var gridSplitter = (GridSplitter)d;
+            GridSplitter gridSplitter = (GridSplitter)d;
 
             if (gridSplitter._hoverWrapper == null)
             {
@@ -196,7 +195,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private static void GripperCustomCursorResourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var gridSplitter = (GridSplitter)d;
+            GridSplitter gridSplitter = (GridSplitter)d;
 
             if (gridSplitter._hoverWrapper == null)
             {
@@ -208,7 +207,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private static void CursorBehaviorPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var gridSplitter = (GridSplitter)d;
+            GridSplitter gridSplitter = (GridSplitter)d;
 
             gridSplitter._hoverWrapper?.UpdateHoverElement(gridSplitter.CursorBehavior ==
                                                            SplitterCursorBehavior.ChangeOnSplitterHover
@@ -218,7 +217,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private static void OnElementPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var gridSplitter = (GridSplitter)d;
+            GridSplitter gridSplitter = (GridSplitter)d;
 
             gridSplitter._hoverWrapper?.UpdateHoverElement(gridSplitter.CursorBehavior ==
                                                            SplitterCursorBehavior.ChangeOnSplitterHover

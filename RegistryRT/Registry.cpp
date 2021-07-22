@@ -35,224 +35,222 @@ Registry::Registry()
 void Registry::InitNTDLLEntryPoints()
 {
 	NtOpenThread = (LPNTOPENTHREAD)GetProcAddress("NTDLL.DLL", "NtOpenThread");
-	if (!NtOpenThread) {
+	if (!NtOpenThread)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
 	}
 	NtCreateKey = (LPNTCREATEKEY)GetProcAddress("NTDLL.DLL", "NtCreateKey");
-	if (!NtCreateKey) {
+	if (!NtCreateKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
 	}
 	NtOpenKey = (LPNTOPENKEY)GetProcAddress("NTDLL.DLL", "NtOpenKey");
-	if (!NtOpenKey) {
+	if (!NtOpenKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtFlushKey = (LPNTFLUSHKEY)GetProcAddress("NTDLL.DLL", "NtFlushKey");
-	if (!NtFlushKey) {
+	if (!NtFlushKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtDeleteKey = (LPNTDELETEKEY)GetProcAddress("NTDLL.DLL", "NtDeleteKey");
-	if (!NtDeleteKey) {
+	if (!NtDeleteKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtQueryKey = (LPNTQUERYKEY)GetProcAddress("NTDLL.DLL", "NtQueryKey");
-	if (!NtQueryKey) {
+	if (!NtQueryKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtEnumerateKey = (LPNTENUMERATEKEY)GetProcAddress("NTDLL.DLL", "NtEnumerateKey");
-	if (!NtEnumerateKey) {
+	if (!NtEnumerateKey)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtClose = (LPNTCLOSE)GetProcAddress("NTDLL.DLL", "NtClose");
-	if (!NtClose) {
+	if (!NtClose)
+	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtSetValueKey = (LPNTSETVALUEKEY)GetProcAddress("NTDLL.DLL", "NtSetValueKey");
 	if (!NtSetValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtSetInformationKey = (LPNTSETINFORMATIONKEY)GetProcAddress("NTDLL.DLL", "NtSetInformationKey");
 	if (!NtSetInformationKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtQueryValueKey = (LPNTQUERYVALUEKEY)GetProcAddress("NTDLL.DLL", "NtQueryValueKey");
 	if (!NtQueryValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtEnumerateValueKey = (LPNTENUMERATEVALUEKEY)GetProcAddress("NTDLL.DLL", "NtEnumerateValueKey");
 	if (!NtEnumerateValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtDeleteValueKey = (LPNTDELETEVALUEKEY)GetProcAddress("NTDLL.DLL", "NtDeleteValueKey");
 	if (!NtDeleteValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtRenameKey = (LPNTRENAMEKEY)GetProcAddress("NTDLL.DLL", "NtRenameKey");
 	if (!NtDeleteValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtQueryMultipleValueKey = (LPNTQUERYMULTIPLEVALUEKEY)GetProcAddress("NTDLL.DLL", "NtQueryMultipleValueKey");
 	if (!NtQueryMultipleValueKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtNotifyChangeKey = (LPNTNOTIFYCHANGEKEY)GetProcAddress("NTDLL.DLL", "NtNotifyChangeKey");
 	if (!NtNotifyChangeKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtCreateFile = (LPNTCREATEFILE)GetProcAddress("NTDLL.DLL", "NtCreateFile");
 	if (!NtCreateFile)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtOpenProcessToken = (LPNTOPENPROCESSTOKEN)GetProcAddress("NTDLL.DLL", "NtOpenProcessToken");
 	if (!NtOpenProcessToken)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtAdjustPrivilegesToken = (LPNTADJUSTPRIVILEGESTOKEN)GetProcAddress("NTDLL.DLL", "NtAdjustPrivilegesToken");
 	if (!NtAdjustPrivilegesToken)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtQueryInformationToken = (LPNTQUERYINFORMATIONTOKEN)GetProcAddress("NTDLL.DLL", "NtQueryInformationToken");
 	if (!NtQueryInformationToken)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	RtlAllocateHeap = (LPRTLALLOCATEHEAP)GetProcAddress("NTDLL.DLL", "RtlAllocateHeap");
 	if (!RtlAllocateHeap)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	RtlFreeHeap = (LPRTLFREEHEAP)GetProcAddress("NTDLL.DLL", "RtlFreeHeap");
 	if (!RtlFreeHeap)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtRestoreKey = (LPNTRESTOREKEY)GetProcAddress("NTDLL.DLL", "NtRestoreKey");
 	if (!NtRestoreKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtSaveKey = (LPNTSAVEKEY)GetProcAddress("NTDLL.DLL", "NtSaveKey");
 	if (!NtSaveKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtLoadKey = (LPNTLOADKEY)GetProcAddress("NTDLL.DLL", "NtLoadKey");
 	if (!NtLoadKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtLoadKey2 = (LPNTLOADKEY2)GetProcAddress("NTDLL.DLL", "NtLoadKey2");
 	if (!NtLoadKey2)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtReplaceKey = (LPNTREPLACEKEY)GetProcAddress("NTDLL.DLL", "NtReplaceKey");
 	if (!NtReplaceKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtUnloadKey = (LPNTUNLOADKEY)GetProcAddress("NTDLL.DLL", "NtUnloadKey");
 	if (!NtUnloadKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtCompactKeys = (LPNTCOMPACTKEYS)GetProcAddress("NTDLL.DLL", "NtCompactKeys");
 	if (!NtCompactKeys)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtCompressKey = (LPNTCOMPRESSKEY)GetProcAddress("NTDLL.DLL", "NtCompressKey");
 	if (!NtCompressKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtLockRegistryKey = (LPNTLOCKREGISTRYKEY)GetProcAddress("NTDLL.DLL", "NtLockRegistryKey");
 	if (!NtLockRegistryKey)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtQueryOpenSubKeysEx = (LPNTQUERYOPENSUBKEYSEX)GetProcAddress("NTDLL.DLL", "NtQueryOpenSubKeysEx");
 	if (!NtQueryOpenSubKeysEx)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtSaveKeyEx = (LPNTSAVEKEYEX)GetProcAddress("NTDLL.DLL", "NtSaveKeyEx");
 	if (!NtSaveKeyEx)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtLoadKeyEx = (LPNTLOADKEYEX)GetProcAddress("NTDLL.DLL", "NtLoadKeyEx");
 	if (!NtLoadKeyEx)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtUnloadKey2 = (LPNTUNLOADKEY2)GetProcAddress("NTDLL.DLL", "NtUnloadKey2");
 	if (!NtUnloadKey2)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
 	NtUnloadKeyEx = (LPNTUNLOADKEYEX)GetProcAddress("NTDLL.DLL", "NtUnloadKeyEx");
 	if (!NtUnloadKeyEx)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
-
 	}
-
 	RtlInitString = (LPRTLINITSTRING)GetProcAddress("NTDLL.DLL", "RtlInitString");
+	if (!RtlInitString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlInitAnsiString = (LPRTLINITANSISTRING)GetProcAddress("NTDLL.DLL", "RtlInitAnsiString");
+	if (!RtlInitAnsiString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlInitUnicodeString = (LPRTLINITUNICODESTRING)GetProcAddress("NTDLL.DLL", "RtlInitUnicodeString");
+	if (!RtlInitUnicodeString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlAnsiStringToUnicodeString = (LPRTLANSISTRINGTOUNICODESTRING)GetProcAddress("NTDLL.DLL", "RtlAnsiStringToUnicodeString");
+	if (!RtlAnsiStringToUnicodeString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlUnicodeStringToAnsiString = (LPRTLUNICODESTRINGTOANSISTRING)GetProcAddress("NTDLL.DLL", "RtlUnicodeStringToAnsiString");
-	RtlFreeString = (LPRTLFREESTRING)GetProcAddress("NTDLL.DLL", "RtlFreeString");
+	if (!RtlUnicodeStringToAnsiString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlFreeAnsiString = (LPRTLFREEANSISTRING)GetProcAddress("NTDLL.DLL", "RtlFreeAnsiString");
+	if (!RtlFreeAnsiString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlFreeUnicodeString = (LPRTLFREEUNICODESTRING)GetProcAddress("NTDLL.DLL", "RtlFreeUnicodeString");
+	if (!RtlFreeUnicodeString)
+	{
+		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
+	}
 	RtlConvertSidToUnicodeString = (LPRTLCONVERTSIDTOUNICODESTRING)GetProcAddress("NTDLL.DLL", "RtlConvertSidToUnicodeString");
-	if (!RtlInitString && !RtlInitAnsiString && !RtlInitUnicodeString &&
-		!RtlAnsiStringToUnicodeString && !RtlUnicodeStringToAnsiString &&
-		!RtlFreeString && !RtlFreeAnsiString && !RtlFreeUnicodeString && !RtlConvertSidToUnicodeString)
+	if (!RtlConvertSidToUnicodeString)
 	{
 		throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
 	}
@@ -260,12 +258,12 @@ void Registry::InitNTDLLEntryPoints()
 	GetTokenInformation = (LPGETTOKENINFORMATION)GetProcAddress("kernelbase.dll", "GetTokenInformation");
 	OpenProcessToken = (LPOPENPROCESSTOKEN)GetProcAddress("kernelbase.dll", "OpenProcessToken");
 	OpenThreadToken = (LPOPENTHREADTOKEN)GetProcAddress("kernelbase.dll", "OpenThreadToken");
-	if (GetTokenInformation && OpenProcessToken && OpenThreadToken)
+	if (!GetTokenInformation || !OpenProcessToken || !OpenThreadToken)
 	{
 		GetTokenInformation = (LPGETTOKENINFORMATION)GetProcAddress("Advapi32.dll", "GetTokenInformation");
 		OpenProcessToken = (LPOPENPROCESSTOKEN)GetProcAddress("Advapi32.dll", "OpenProcessToken");
 		OpenThreadToken = (LPOPENTHREADTOKEN)GetProcAddress("Advapi32.dll", "OpenThreadToken");
-		if (!GetTokenInformation && !OpenProcessToken && !OpenThreadToken)
+		if (!GetTokenInformation || !OpenProcessToken || !OpenThreadToken)
 		{
 			throw ref new Platform::COMException(HRESULT_FROM_WIN32(GetLastError()));
 		}

@@ -11,7 +11,7 @@
   <Identity
     Name="52346ITDevTeam.UniversalRegistryEditor"
     Publisher="CN=EDCB61F7-02FF-43C6-8E0B-FDE1D2E3E137"
-    Version="1.0.13.0" />
+    Version="1.0.23.0" />
 
   <mp:PhoneIdentity PhoneProductId="741c003b-4ee0-45ab-9169-fca11680c5a6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

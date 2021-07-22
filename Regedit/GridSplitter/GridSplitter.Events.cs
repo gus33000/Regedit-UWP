@@ -35,7 +35,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
             if (_hoverWrapper == null)
             {
-                var hoverWrapper = new GripperHoverWrapper(
+                GripperHoverWrapper hoverWrapper = new(
                     CursorBehavior == SplitterCursorBehavior.ChangeOnSplitterHover
                     ? this
                     : Element,
@@ -70,8 +70,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// <inheritdoc />
         protected override void OnKeyDown(KeyRoutedEventArgs e)
         {
-            var step = 1;
-            var ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control);
+            int step = 1;
+            CoreVirtualKeyStates ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control);
             if (ctrl.HasFlag(CoreVirtualKeyStates.Down))
             {
                 step = 5;
@@ -148,8 +148,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// <inheritdoc />
         protected override void OnManipulationDelta(ManipulationDeltaRoutedEventArgs e)
         {
-            var horizontalChange = e.Delta.Translation.X;
-            var verticalChange = e.Delta.Translation.Y;
+            double horizontalChange = e.Delta.Translation.X;
+            double verticalChange = e.Delta.Translation.Y;
 
             if (this.FlowDirection == FlowDirection.RightToLeft)
             {
@@ -220,7 +220,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return true;
                 }
 
-                foreach (var rowDefinition in Resizable.RowDefinitions)
+                foreach (RowDefinition rowDefinition in Resizable.RowDefinitions)
                 {
                     if (rowDefinition == CurrentRow)
                     {
@@ -286,7 +286,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return true;
                 }
 
-                foreach (var columnDefinition in Resizable.ColumnDefinitions)
+                foreach (ColumnDefinition columnDefinition in Resizable.ColumnDefinitions)
                 {
                     if (columnDefinition == CurrentColumn)
                     {

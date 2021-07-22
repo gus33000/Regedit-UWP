@@ -6,6 +6,8 @@
       xmlns:local="using:Regedit"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:Windows10FallCreatorsUpdate="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+      xmlns:Windows10FallCreatorsUpdate1="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
 
@@ -53,130 +55,130 @@
                           Grid.ColumnSpan="2"
                           Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
                 <muxc:MenuBarItem Title="File">
-                    <muxc:MenuBarItem.KeyboardAccelerators>
+                    <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="F" Modifiers="Menu" />
-                    </muxc:MenuBarItem.KeyboardAccelerators>
+                    </Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Text="Import...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8B5;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="I" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Export...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xEDE1;"/>
                         </MenuFlyoutItem.Icon>                        
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="E" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem IsEnabled="False" Text="Load Hive...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="L" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Unload Hive...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="U" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Connect Network Registry...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="C" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Disconnect Network Registry...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="D" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Print...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE749;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="P" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Exit">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8BB;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="X" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Edit">
-                    <muxc:MenuBarItem.KeyboardAccelerators>
+                    <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="E" Modifiers="Menu" />
-                    </muxc:MenuBarItem.KeyboardAccelerators>
+                    </Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem FontWeight="Bold"
                                     IsEnabled="False"
                                     Text="Modify...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE70F;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="M" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Modify Binary Data...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutSubItem Text="New">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE710;"/>
                         </MenuFlyoutSubItem.Icon>
-                        <MenuFlyoutSubItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutSubItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="N" Modifiers="Control" />
-                        </MenuFlyoutSubItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutSubItem.KeyboardAccelerators>
                         <MenuFlyoutSubItem.Items>
                             <MenuFlyoutItem Text="Key">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="K" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutSeparator />
                             <MenuFlyoutItem Text="String Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="S" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="Binary Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="B" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="DWORD (32-bit) Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="D" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="QWORD (64-bit) Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="Q" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="Multi-String Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="M" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="Expandable String Value">
-                                <MenuFlyoutItem.KeyboardAccelerators>
+                                <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="E" Modifiers="Control" />
-                                </MenuFlyoutItem.KeyboardAccelerators>
+                                </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
                         </MenuFlyoutSubItem.Items>
                     </MenuFlyoutSubItem>
@@ -185,134 +187,134 @@
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8D7;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="P" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem IsEnabled="False" Text="Delete">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE74D;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="Delete" Modifiers="None" />
                             <KeyboardAccelerator Key="D" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Rename">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8AC;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Copy Key Name">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8C8;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="C" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Find...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE721;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Find Next">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE893;"/>
                         </MenuFlyoutItem.Icon>                        
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F3" Modifiers="None" />
                             <KeyboardAccelerator Key="X" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="View">
-                    <muxc:MenuBarItem.KeyboardAccelerators>
+                    <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="V" Modifiers="Menu" />
-                    </muxc:MenuBarItem.KeyboardAccelerators>
+                    </Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                     <ToggleMenuFlyoutItem IsChecked="True" Text="Address Bar">
                         <ToggleMenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE718;"/>
                         </ToggleMenuFlyoutItem.Icon>
-                        <ToggleMenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:ToggleMenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
-                        </ToggleMenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:ToggleMenuFlyoutItem.KeyboardAccelerators>
                     </ToggleMenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Split">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="L" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem IsEnabled="False" Text="Display Binary Data...">
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="D" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Text="Refresh">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE72C;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F5" Modifiers="None" />
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Font">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8D2;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Favorites">
-                    <muxc:MenuBarItem.KeyboardAccelerators>
+                    <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="A" Modifiers="Menu" />
-                    </muxc:MenuBarItem.KeyboardAccelerators>
+                    </Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Text="Add to Favorites...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE735;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="A" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem IsEnabled="False" Text="Remove Favorite...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8D9;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Help">
-                    <muxc:MenuBarItem.KeyboardAccelerators>
+                    <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="H" Modifiers="Menu" />
-                    </muxc:MenuBarItem.KeyboardAccelerators>
+                    </Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                     <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="About Registry Editor...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE897;"/>
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
+                        <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="A" Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
+                        </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
@@ -327,24 +329,24 @@
                           Margin="0,0,8,0"
                           HorizontalScrollBarVisibility="Auto"
                           HorizontalScrollMode="Auto">
-                <TreeView Name="RegistryTree"
+                <muxc:TreeView Name="RegistryTree"
                           Expanding="RegistryTree_Expanding"
                           ItemInvoked="RegistryTree_ItemInvoked"
                           ItemsSource="{x:Bind DataSource}"
                           SelectionMode="Single">
-                    <TreeView.ItemTemplate>
+                    <muxc:TreeView.ItemTemplate>
                         <DataTemplate x:DataType="local:Item">
-                            <TreeViewItem IsExpanded="{x:Bind Expanded}"
+                            <muxc:TreeViewItem IsExpanded="{x:Bind Expanded}"
                                           IsSelected="{x:Bind Expanded, Mode=OneTime}"
                                           ItemsSource="{x:Bind Children}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="20" Source="{x:Bind Image}" />
                                     <TextBlock Margin="12,0,24,0" Text="{x:Bind Name}" />
                                 </StackPanel>
-                            </TreeViewItem>
+                            </muxc:TreeViewItem>
                         </DataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>
+                    </muxc:TreeView.ItemTemplate>
+                </muxc:TreeView>
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="2"

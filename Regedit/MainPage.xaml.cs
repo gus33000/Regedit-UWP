@@ -1,74 +1,61 @@
-﻿using System;
-
+﻿using RegistryRT;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using System.Linq;
-
 using Windows.ApplicationModel.Core;
-
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
-using RegistryRT;
+#nullable enable
 
 namespace Regedit
 {
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<Item> DataSource = new ObservableCollection<Item>();
+        private readonly ObservableCollection<Item> DataSource = new();
 
-        private Registry registry = new Registry();
+        private readonly Registry registry = new();
 
-        private ImageSource folderImageSource;
-        private ImageSource computerImageSource;
-        private ImageSource numbersImageSource;
-        private ImageSource textImageSource;
+        private readonly string folderImageSource = "ms-appx:///Assets/folder.png";
+        private readonly string computerImageSource = "ms-appx:///Assets/computer.png";
+        private readonly string numbersImageSource = "ms-appx:///Assets/numbers.png";
+        private readonly string textImageSource = "ms-appx:///Assets/text.png";
 
         public MainPage()
         {
             this.InitializeComponent();
             registry.InitNTDLLEntryPoints();
 
-            folderImageSource = GetImage("folder.png");
-            computerImageSource = GetImage("computer.png");
-            numbersImageSource = GetImage("numbers.png");
-            textImageSource = GetImage("text.png");
+            GetRegistryData();
+            //DataSource = GetRegistryData();
 
-            DataSource = GetRegistryData();
+            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            if (coreTitleBar != null)
+            {
+                coreTitleBar.ExtendViewIntoTitleBar = true;
+                coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
+            }
 
-            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
-            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
             // Set XAML element as a draggable region.
             Window.Current.SetTitleBar(AppTitleBar);
 
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            // Set active window colors
-            titleBar.BackgroundColor = Windows.UI.Colors.Transparent;
-            titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-            titleBar.ButtonHoverBackgroundColor = Windows.UI.Colors.Transparent;
-            titleBar.ButtonPressedBackgroundColor = Windows.UI.Colors.Transparent;
+            if (titleBar != null)
+            {
+                // Set active window colors
+                titleBar.BackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonHoverBackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonPressedBackgroundColor = Windows.UI.Colors.Transparent;
 
-            // Set inactive window colors
-            titleBar.InactiveBackgroundColor = Windows.UI.Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
-        }
-
-        private ImageSource GetImage(string ImageSource)
-        {
-            var bitmap = new BitmapImage();
-            var f = Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/" + ImageSource));
-            f.AsTask().Wait();
-            var o = f.AsTask().Result.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            o.AsTask().Wait();
-            bitmap.SetSource(o.AsTask().Result);
-            return bitmap;
+                // Set inactive window colors
+                titleBar.InactiveBackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+            }
         }
 
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
@@ -76,57 +63,57 @@ namespace Regedit
             AppTitleBar.Height = sender.Height;
         }
 
-        private ObservableCollection<Item> GetRegistryData()
+        private void GetRegistryData()
         {
-            var list = new ObservableCollection<Item>();
-
-            list.Add(new Item()
+            ObservableCollection<Item> list = new()
             {
-                Name = "HKEY_CLASSES_ROOT",
-                Image = folderImageSource,
-                Hive = RegistryHive.HKEY_CLASSES_ROOT,
-                Path = ""
-            });
+                new Item()
+                {
+                    Name = "HKEY_CLASSES_ROOT",
+                    Image = folderImageSource,
+                    Hive = RegistryHive.HKEY_CLASSES_ROOT,
+                    Path = ""
+                },
 
-            list.Add(new Item()
-            {
-                Name = "HKEY_CURRENT_USER",
-                Image = folderImageSource,
-                Hive = RegistryHive.HKEY_CURRENT_USER,
-                Path = ""
-            });
+                new Item()
+                {
+                    Name = "HKEY_CURRENT_USER",
+                    Image = folderImageSource,
+                    Hive = RegistryHive.HKEY_CURRENT_USER,
+                    Path = ""
+                },
 
-            list.Add(new Item()
-            {
-                Name = "HKEY_LOCAL_MACHINE",
-                Image = folderImageSource,
-                Hive = RegistryHive.HKEY_LOCAL_MACHINE,
-                Path = ""
-            });
+                new Item()
+                {
+                    Name = "HKEY_LOCAL_MACHINE",
+                    Image = folderImageSource,
+                    Hive = RegistryHive.HKEY_LOCAL_MACHINE,
+                    Path = ""
+                },
 
-            list.Add(new Item()
-            {
-                Name = "HKEY_USERS",
-                Image = folderImageSource,
-                Hive = RegistryHive.HKEY_USERS,
-                Path = ""
-            });
+                new Item()
+                {
+                    Name = "HKEY_USERS",
+                    Image = folderImageSource,
+                    Hive = RegistryHive.HKEY_USERS,
+                    Path = ""
+                },
 
-            list.Add(new Item()
-            {
-                Name = "HKEY_CURRENT_CONFIG",
-                Image = folderImageSource,
-                Hive = RegistryHive.HKEY_CURRENT_CONFIG,
-                Path = ""
-            });
+                new Item()
+                {
+                    Name = "HKEY_CURRENT_CONFIG",
+                    Image = folderImageSource,
+                    Hive = RegistryHive.HKEY_CURRENT_CONFIG,
+                    Path = ""
+                }
+            };
 
-            foreach (var element in list)
+            foreach (Item element in list)
             {
                 try
                 {
-                    string[] keys;
-                    registry.GetSubKeyList(element.Hive, element.Path, out keys);
-                    foreach (var key in keys)
+                    registry.GetSubKeyList(element.Hive, element.Path, out string[] keys);
+                    foreach (string key in keys)
                     {
                         element.Children.Add(new Item()
                         {
@@ -144,37 +131,34 @@ namespace Regedit
             }
 
 
-            var root = new Item()
+            DataSource.Add(new Item()
             {
                 Name = "Computer",
                 Children = list,
                 Image = computerImageSource,
                 Expanded = true
-            };
-
-            return new ObservableCollection<Item> { root };
+            });
         }
 
-        private void RegistryTree_Expanding(TreeView sender, TreeViewExpandingEventArgs args)
+        private void RegistryTree_Expanding(Microsoft.UI.Xaml.Controls.TreeView sender, Microsoft.UI.Xaml.Controls.TreeViewExpandingEventArgs args)
         {
-            var selectedItem = (Item)args.Item;
+            Item selectedItem = (Item)args.Item;
 
             _ = Windows.System.Threading.ThreadPool.RunAsync(async (source) =>
             {
-                foreach (var element in selectedItem.Children)
+                foreach (Item element in selectedItem.Children)
                 {
                     if (element.Children.Count != 0)
                         break;
 
-                    string[] keys;
-                    registry.GetSubKeyList(element.Hive, element.Path, out keys);
+                    registry.GetSubKeyList(element.Hive, element.Path, out string[] keys);
 
                     if (keys == null)
                         continue;
 
-                    foreach (var key in keys)
+                    foreach (string key in keys)
                     {
-                        var item = new Item()
+                        Item item = new()
                         {
                             Name = key,
                             Hive = element.Hive,
@@ -191,9 +175,9 @@ namespace Regedit
             });
         }
 
-        private void RegistryTree_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
+        private void RegistryTree_ItemInvoked(Microsoft.UI.Xaml.Controls.TreeView sender, Microsoft.UI.Xaml.Controls.TreeViewItemInvokedEventArgs args)
         {
-            var item = args.InvokedItem as Item;
+            Item item = args.InvokedItem as Item;
 
             if (item.Name == "Computer" && string.IsNullOrEmpty(item.Path))
             {
@@ -211,7 +195,7 @@ namespace Regedit
                     PathTextBox.Text = "Computer\\" + item.Hive.ToString() + "\\" + item.Path.TrimEnd('\\');
                 }
 
-                List<ValueItem> valueItems = new List<ValueItem>();
+                List<ValueItem> valueItems = new();
 
                 RegistryType dtype = RegistryType.String;
                 byte[] dbuf = System.Text.Encoding.Unicode.GetBytes("(value not set)");
@@ -219,7 +203,8 @@ namespace Regedit
                 try
                 {
                     registry.QueryValue(item.Hive, item.Path, null, out dtype, out dbuf);
-                } catch { };
+                }
+                catch { };
 
                 string ddatastr = "(value not set)";
 
@@ -249,24 +234,22 @@ namespace Regedit
                     ParentItem = item
                 });
 
-                string[] list;
-                registry.GetValueList(item.Hive, item.Path, out list);
+                registry.GetValueList(item.Hive, item.Path, out string[] list);
 
                 if (list != null && list.Length != 0)
                 {
                     valueItems.AddRange(list.ToList().OrderBy(x => x).Select(x =>
                     {
-                        var vtype = registry.GetValueInfo(item.Hive, item.Path, x, 0);
+                        RegistryType vtype = registry.GetValueInfo(item.Hive, item.Path, x, 0);
 
-                        var vitem = new ValueItem()
+                        ValueItem vitem = new()
                         {
                             Name = x,
                             Type = vtype.ToString(),
                             ParentItem = item
                         };
 
-                        byte[] buf;
-                        registry.QueryValue(item.Hive, item.Path, x, out vtype, out buf);
+                        registry.QueryValue(item.Hive, item.Path, x, out vtype, out byte[] buf);
 
                         if (vtype == RegistryType.String)
                         {
@@ -297,25 +280,25 @@ namespace Regedit
             }
         }
 
+        private string GetRegistryString(RegistryHive hive, string path, string valuename)
+        {
+            string result = "";
+            if (registry.QueryValue(hive, path, valuename, out RegistryType vtype, out byte[] buf) && buf != null && buf.Length > 0 && vtype == RegistryType.String)
+            {
+                result = System.Text.Encoding.Unicode.GetString(buf);
+            }
+            return result;
+        }
+
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            byte[] buf;
-            uint vtype;
-            registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "BuildLabEx", out vtype, out buf);
-            var vers = string.Join(".", System.Text.Encoding.Unicode.GetString(buf).Split('.').Take(2));
-            registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", out vtype, out buf);
-            var osversion = System.Text.Encoding.Unicode.GetString(buf);
-            registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName", out vtype, out buf);
-            var osname = System.Text.Encoding.Unicode.GetString(buf);
-            registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "RegisteredOrganization", out vtype, out buf);
-            var RegisteredOrganization = "";
-            if (buf != null && buf.Length > 0)
-            {
-                RegisteredOrganization = System.Text.Encoding.Unicode.GetString(buf);
-            }
-            registry.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "RegisteredOwner", out vtype, out buf);
-            var RegisteredOwner = System.Text.Encoding.Unicode.GetString(buf);
-            AboutContentDialog dialog = new AboutContentDialog(osname, RegisteredOwner, RegisteredOrganization, osversion, vers);
+            string vers = string.Join(".", GetRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "BuildLabEx").Split('.').Take(2));
+            string osversion = GetRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId");
+            string osname = GetRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName");
+            string RegisteredOrganization = GetRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "RegisteredOrganization");
+            string RegisteredOwner = GetRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "RegisteredOwner");
+
+            AboutContentDialog dialog = new(osname, RegisteredOwner, RegisteredOrganization, osversion, vers);
             await dialog.ShowAsync();
         }
     }
@@ -327,7 +310,7 @@ namespace Regedit
         public bool Expanded { get; set; }
         public RegistryHive Hive { get; set; }
 
-        public ImageSource Image { get; set; }
+        public string Image { get; set; }
         public ObservableCollection<Item> Children { get; set; } = new ObservableCollection<Item>();
 
         public override string ToString()
@@ -341,7 +324,7 @@ namespace Regedit
         public string Name { get; set; }
         public string Type { get; set; }
         public string Data { get; set; }
-        public ImageSource Image { get; set; }
+        public string Image { get; set; }
         public Item ParentItem { get; set; }
     }
 }

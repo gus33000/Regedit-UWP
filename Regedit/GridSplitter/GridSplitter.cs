@@ -4,7 +4,6 @@
 
 using Windows.UI.Core;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -16,8 +15,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
     public partial class GridSplitter : Control
     {
         internal const int GripperCustomCursorDefaultResource = -1;
-        internal static readonly CoreCursor ColumnsSplitterCursor = new CoreCursor(CoreCursorType.SizeWestEast, 1);
-        internal static readonly CoreCursor RowSplitterCursor = new CoreCursor(CoreCursorType.SizeNorthSouth, 1);
+        internal static readonly CoreCursor ColumnsSplitterCursor = new(CoreCursorType.SizeWestEast, 1);
+        internal static readonly CoreCursor RowSplitterCursor = new(CoreCursorType.SizeNorthSouth, 1);
 
         internal CoreCursor PreviousCursor { get; set; }
 
@@ -42,11 +41,10 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return this;
                 }
 
-                var parent = Parent;
+                DependencyObject parent = Parent;
                 for (int i = 2; i < ParentLevel; i++)
                 {
-                    var frameworkElement = parent as FrameworkElement;
-                    if (frameworkElement != null)
+                    if (parent is FrameworkElement frameworkElement)
                     {
                         parent = frameworkElement.Parent;
                     }
@@ -73,7 +71,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return null;
                 }
 
-                var gridSplitterTargetedColumnIndex = GetTargetedColumn();
+                int gridSplitterTargetedColumnIndex = GetTargetedColumn();
 
                 if ((gridSplitterTargetedColumnIndex >= 0)
                     && (gridSplitterTargetedColumnIndex < Resizable.ColumnDefinitions.Count))
@@ -97,7 +95,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return null;
                 }
 
-                var gridSplitterSiblingColumnIndex = GetSiblingColumn();
+                int gridSplitterSiblingColumnIndex = GetSiblingColumn();
 
                 if ((gridSplitterSiblingColumnIndex >= 0)
                     && (gridSplitterSiblingColumnIndex < Resizable.ColumnDefinitions.Count))
@@ -121,7 +119,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return null;
                 }
 
-                var gridSplitterTargetedRowIndex = GetTargetedRow();
+                int gridSplitterTargetedRowIndex = GetTargetedRow();
 
                 if ((gridSplitterTargetedRowIndex >= 0)
                     && (gridSplitterTargetedRowIndex < Resizable.RowDefinitions.Count))
@@ -145,7 +143,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return null;
                 }
 
-                var gridSplitterSiblingRowIndex = GetSiblingRow();
+                int gridSplitterSiblingRowIndex = GetSiblingRow();
 
                 if ((gridSplitterSiblingRowIndex >= 0)
                     && (gridSplitterSiblingRowIndex < Resizable.RowDefinitions.Count))
