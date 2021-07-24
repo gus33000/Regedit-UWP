@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29721.120
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regedit", "Regedit\Regedit.csproj", "{1DFB2ADA-6291-4EF2-8A18-761673A88BC7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RegistryRT", "RegistryRT\RegistryRT.vcxproj", "{84A7225C-2DAF-410D-AB85-282AB220A89F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeViewControl", "XamlTreeView\TreeViewControl.vcxproj", "{94560D69-A345-4E44-B897-EAA2B0E23238}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,22 @@ Global
 		{84A7225C-2DAF-410D-AB85-282AB220A89F}.Release|x64.Build.0 = Release|x64
 		{84A7225C-2DAF-410D-AB85-282AB220A89F}.Release|x86.ActiveCfg = Release|Win32
 		{84A7225C-2DAF-410D-AB85-282AB220A89F}.Release|x86.Build.0 = Release|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM.ActiveCfg = Debug|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM.Build.0 = Debug|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM64.Build.0 = Debug|ARM64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x64.ActiveCfg = Debug|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x64.Build.0 = Debug|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x86.ActiveCfg = Debug|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x86.Build.0 = Debug|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM.ActiveCfg = Release|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM.Build.0 = Release|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM64.ActiveCfg = Release|ARM64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM64.Build.0 = Release|ARM64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x64.ActiveCfg = Release|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x64.Build.0 = Release|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x86.ActiveCfg = Release|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

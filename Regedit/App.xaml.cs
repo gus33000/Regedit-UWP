@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistryRT;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -12,6 +13,8 @@ namespace Regedit
     /// </summary>
     sealed partial class App : Application
     {
+        public static readonly Registry registry = new();
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -20,6 +23,7 @@ namespace Regedit
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            registry.InitNTDLLEntryPoints();
         }
 
         /// <summary>

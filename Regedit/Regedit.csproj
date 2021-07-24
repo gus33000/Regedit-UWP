@@ -11,7 +11,7 @@
     <AssemblyName>Regedit</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -145,6 +145,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistryTreeView\DataBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -243,6 +244,10 @@
     <ProjectReference Include="..\RegistryRT\RegistryRT.vcxproj">
       <Project>{84a7225c-2daf-410d-ab85-282ab220a89f}</Project>
       <Name>RegistryRT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XamlTreeView\TreeViewControl.vcxproj">
+      <Project>{94560d69-a345-4e44-b897-eaa2b0e23238}</Project>
+      <Name>TreeViewControl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

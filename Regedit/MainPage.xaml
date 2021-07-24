@@ -8,6 +8,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:Windows10FallCreatorsUpdate="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
       xmlns:Windows10FallCreatorsUpdate1="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+      xmlns:local1="using:Regedit.RegistryTreeView"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
 
@@ -69,7 +70,7 @@
                     <MenuFlyoutItem Text="Export...">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xEDE1;"/>
-                        </MenuFlyoutItem.Icon>                        
+                        </MenuFlyoutItem.Icon>
                         <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="E" Modifiers="Control" />
                         </Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
@@ -230,7 +231,7 @@
                     <MenuFlyoutItem Text="Find Next">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE893;"/>
-                        </MenuFlyoutItem.Icon>                        
+                        </MenuFlyoutItem.Icon>
                         <Windows10FallCreatorsUpdate1:MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Key="F3" Modifiers="None" />
                             <KeyboardAccelerator Key="X" Modifiers="Control" />
@@ -332,10 +333,10 @@
                 <muxc:TreeView Name="RegistryTree"
                           Expanding="RegistryTree_Expanding"
                           ItemInvoked="RegistryTree_ItemInvoked"
-                          ItemsSource="{x:Bind DataSource}"
+                          ItemsSource="{x:Bind Data.DataSource}"
                           SelectionMode="Single">
                     <muxc:TreeView.ItemTemplate>
-                        <DataTemplate x:DataType="local:Item">
+                        <DataTemplate x:DataType="local1:Item">
                             <muxc:TreeViewItem IsExpanded="{x:Bind Expanded}"
                                           IsSelected="{x:Bind Expanded, Mode=OneTime}"
                                           ItemsSource="{x:Bind Children}">
@@ -390,7 +391,7 @@
                         </ListView.ItemContainerStyle>
 
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ValueItem">
+                            <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
                                     <Image Width="20"
                                            Height="20"
@@ -412,7 +413,7 @@
                         </ListView.ItemContainerStyle>
 
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ValueItem">
+                            <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
                                     <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
@@ -432,7 +433,7 @@
                         </ListView.ItemContainerStyle>
 
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ValueItem">
+                            <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
                                     <TextBlock Text="{x:Bind Type}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
@@ -452,7 +453,7 @@
                         </ListView.ItemContainerStyle>
 
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ValueItem">
+                            <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
                                     <TextBlock Text="{x:Bind Data}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
