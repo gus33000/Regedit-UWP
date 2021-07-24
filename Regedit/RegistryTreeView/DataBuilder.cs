@@ -1,21 +1,40 @@
-﻿using RegistryRT;
+﻿using Microsoft.UI.Xaml.Controls;
+using RegistryRT;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
+using Windows.UI.Xaml.Controls.Primitives;
+
+#nullable enable
 
 namespace Regedit.RegistryTreeView
 {
-    public class Item
+    public class Item : INotifyPropertyChanged
     {
         public string Name { get; set; }
         public string Path { get; set; }
-        public bool Expanded { get; set; }
+
+        private bool _Expanded = false;
+        public bool Expanded
+        {
+            get => _Expanded; set
+            {
+                if (value != _Expanded)
+                {
+                    _Expanded = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Expanded)));
+                }
+            }
+        }
+
         public RegistryHive Hive { get; set; }
 
         public string Image { get; set; }
         public ObservableCollection<Item> Children { get; set; } = new ObservableCollection<Item>();
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public override string ToString()
         {
@@ -37,7 +56,7 @@ namespace Regedit.RegistryTreeView
         public readonly ObservableCollection<Item> DataSource = new();
         public readonly ObservableCollection<ValueItem> ValueSource = new();
 
-        private string _Path = "";
+        private string _Path = "Computer";
         public string Path
         {
             get => _Path;
@@ -45,6 +64,7 @@ namespace Regedit.RegistryTreeView
             {
                 if (_Path != value)
                 {
+                    OnPathChanged(value);
                     _Path = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Path)));
                 }
@@ -56,7 +76,7 @@ namespace Regedit.RegistryTreeView
         private readonly string numbersImageSource = "ms-appx:///Assets/numbers.png";
         private readonly string textImageSource = "ms-appx:///Assets/text.png";
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public DataBuilder()
         {
@@ -137,59 +157,120 @@ namespace Regedit.RegistryTreeView
                 Image = computerImageSource,
                 Expanded = true
             });
+
+            lastInvokedItem = DataSource[0];
         }
 
-        public void ItemExpanded(Item selectedItem, SynchronizationContext synccontext)
+        public void ItemExpanded(Item selectedItem)
         {
-            _ = Windows.System.Threading.ThreadPool.RunAsync(async (source) =>
+            if (lastInvokedItem != null)
             {
-                foreach (Item element in selectedItem.Children)
+                if (GetPath(selectedItem).ToLower().Equals(GetPath(lastInvokedItem).ToLower(), StringComparison.CurrentCultureIgnoreCase))
                 {
-                    if (element.Children.Count != 0)
-                        break;
+                    return;
+                }
+            }
 
-                    App.registry.GetSubKeyList(element.Hive, element.Path, out string[] keys);
+            if (selectedItem.Expanded == true)
+                return;
 
-                    if (keys == null)
-                        continue;
+            lastInvokedItem = selectedItem;
+            selectedItem.Expanded = true;
 
-                    foreach (string key in keys)
+            foreach (Item element in selectedItem.Children)
+            {
+                if (element.Children.Count > 0)
+                    break;
+
+                App.registry.GetSubKeyList(element.Hive, element.Path, out string[] keys);
+
+                if (keys == null)
+                    continue;
+
+                foreach (string key in keys)
+                {
+                    Item item = new()
                     {
-                        Item item = new()
-                        {
-                            Name = key,
-                            Hive = element.Hive,
-                            Image = folderImageSource,
-                            Path = element.Path + key + "\\"
-                        };
+                        Name = key,
+                        Hive = element.Hive,
+                        Image = folderImageSource,
+                        Path = element.Path + key + "\\"
+                    };
 
-                        synccontext.Post(s =>
-                        {
-                            element.Children.Add(item);
-                        }, this);
+                    element.Children.Add(item);
+                }
+            }
+        }
+
+        public void ItemCollapsed(Item selectedItem)
+        {
+            selectedItem.Expanded = false;
+        }
+
+        private Item? lastInvokedItem;
+
+        private void OnPathChanged(string value)
+        {
+            if (lastInvokedItem != null)
+            {
+                if (value.ToLower().Equals(GetPath(lastInvokedItem).ToLower(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return;
+                }
+            }
+
+            var elements = value.Split('\\');
+            int elementIndex = 0;
+            var treeitems = DataSource;
+
+            while (elementIndex < elements.Length)
+            {
+                bool foundItem = false;
+                foreach (var treeitem in treeitems)
+                {
+                    if (treeitem.Name.ToLower().Equals(elements[elementIndex].ToLower(), StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        elementIndex++;
+                        treeitems = treeitem.Children;
+                        foundItem = true;
+                        ItemExpanded(treeitem);
+                        if (elementIndex == elements.Length)
+                            ItemInvoked(treeitem);
+                        break;
                     }
                 }
-            });
+
+                if (!foundItem)
+                    break;
+            }
+        }
+
+        private string GetPath(Item item)
+        {
+            if (item.Name == "Computer" && string.IsNullOrEmpty(item.Path))
+            {
+                return item.Name;
+            }
+            else if (string.IsNullOrEmpty(item.Path))
+            {
+                return "Computer\\" + item.Hive.ToString();
+            }
+            else
+            {
+                return "Computer\\" + item.Hive.ToString() + "\\" + item.Path.TrimEnd('\\');
+            }
         }
 
         public void ItemInvoked(Item item)
         {
-            if (item.Name == "Computer" && string.IsNullOrEmpty(item.Path))
-            {
-                Path = item.Name;
-                ValueSource.Clear();
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(item.Path))
-                {
-                    Path = "Computer\\" + item.Hive.ToString();
-                }
-                else
-                {
-                    Path = "Computer\\" + item.Hive.ToString() + "\\" + item.Path.TrimEnd('\\');
-                }
+            lastInvokedItem = item;
 
+            ValueSource.Clear();
+
+            Path = GetPath(item);
+
+            if (!(item.Name == "Computer" && string.IsNullOrEmpty(item.Path)))
+            {
                 RegistryType dtype = RegistryType.String;
                 byte[] dbuf = System.Text.Encoding.Unicode.GetBytes("(value not set)");
 

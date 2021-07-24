@@ -135,6 +135,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TitlebarControl.xaml.cs">
+      <DependentUpon>TitlebarControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GridSplitter\GridSplitter.cs" />
     <Compile Include="GridSplitter\GridSplitter.Data.cs" />
     <Compile Include="GridSplitter\GridSplitter.Events.cs" />
@@ -146,6 +149,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryTreeView\DataBuilder.cs" />
+    <Compile Include="RegistryTreeView\GlyphConverter.cs" />
+    <Compile Include="RegistryTreeView\TreeViewExpandingEventArgs.cs" />
+    <Compile Include="RegistryTreeView\TreeViewItemInvokedEventArgs.cs" />
+    <Compile Include="RegistryTreeView\UniversalTreeView.properties.cs" />
+    <Compile Include="RegistryTreeView\UniversalTreeView.xaml.cs">
+      <DependentUpon>UniversalTreeView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -220,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\TitlebarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GridSplitter\GridSplitter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -227,6 +241,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistryTreeView\UniversalTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

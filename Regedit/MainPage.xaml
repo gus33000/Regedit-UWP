@@ -8,8 +8,8 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:Windows10FallCreatorsUpdate="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
       xmlns:Windows10FallCreatorsUpdate1="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
-      xmlns:local1="using:Regedit.RegistryTreeView"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:local1="using:Regedit.RegistryTreeView" xmlns:controls1="using:Regedit.Controls"
+      muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       mc:Ignorable="d">
 
     <Grid>
@@ -18,28 +18,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="AppTitleBar" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
-            <!--  Width of the padding columns is set in LayoutMetricsChanged handler.  -->
-            <!--
-                Using padding columns instead of Margin ensures that the background
-                paints the area under the caption control buttons (for transparent buttons).
-            -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
-                <ColumnDefinition />
-                <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
-            </Grid.ColumnDefinitions>
-            <Image Grid.Column="1"
-                   Width="20"
-                   Height="20"
-                   Margin="12,0"
-                   HorizontalAlignment="Left"
-                   Source="Assets/Square44x44Logo.png" />
-            <TextBlock Grid.Column="1"
-                       Margin="44,8,0,0"
-                       Style="{StaticResource CaptionTextBlockStyle}"
-                       Text="Universal Registry Editor" />
-        </Grid>
+        <Rectangle Fill="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}" />
+
+        <controls1:TitlebarControl />
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -323,14 +304,14 @@
             <TextBox x:Name="PathTextBox"
                      Grid.Row="1"
                      Grid.ColumnSpan="2"
-                     Text="Computer" />
+                     Text="{x:Bind Data.Path, Mode=TwoWay}" />
 
             <ScrollViewer Grid.Row="2"
                           Grid.Column="0"
                           Margin="0,0,8,0"
                           HorizontalScrollBarVisibility="Auto"
                           HorizontalScrollMode="Auto">
-                <muxc:TreeView Name="RegistryTree"
+                <!--<muxc:TreeView Name="RegistryTree"
                           Expanding="RegistryTree_Expanding"
                           ItemInvoked="RegistryTree_ItemInvoked"
                           ItemsSource="{x:Bind Data.DataSource}"
@@ -347,7 +328,8 @@
                             </muxc:TreeViewItem>
                         </DataTemplate>
                     </muxc:TreeView.ItemTemplate>
-                </muxc:TreeView>
+                </muxc:TreeView>-->
+                <local1:UniversalTreeView Data="{x:Bind Data, Mode=OneWay}" />
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="2"
@@ -396,7 +378,7 @@
                                     <Image Width="20"
                                            Height="20"
                                            Margin="10,0,6,0"
-                                           Source="{x:Bind Image}"
+                                           Source="{x:Bind Image, Mode=OneWay}"
                                            Stretch="UniformToFill" />
                                 </Grid>
                             </DataTemplate>
@@ -405,9 +387,10 @@
 
                     <ListView x:Name="ValueListView"
                               Grid.Row="1"
-                              Grid.Column="1">
+                              Grid.Column="1"
+                              ItemsSource="{x:Bind Data.ValueSource, Mode=OneWay}">
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
@@ -415,7 +398,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
-                                    <TextBlock Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -427,7 +410,7 @@
                               ItemsSource="{x:Bind ValueListView.ItemsSource, Mode=OneWay}"
                               SelectionMode="None">
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
@@ -435,7 +418,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
-                                    <TextBlock Text="{x:Bind Type}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{x:Bind Type, Mode=OneWay}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -447,7 +430,7 @@
                               ItemsSource="{x:Bind ValueListView.ItemsSource, Mode=OneWay}"
                               SelectionMode="None">
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
@@ -455,7 +438,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local1:ValueItem">
                                 <Grid>
-                                    <TextBlock Text="{x:Bind Data}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{x:Bind Data, Mode=OneWay}" TextTrimming="CharacterEllipsis" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

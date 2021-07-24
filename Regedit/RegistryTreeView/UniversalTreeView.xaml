@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="Regedit.RegistryTreeView.UniversalTreeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Regedit.RegistryTreeView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tvs="using:TreeViewControl"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <tvs:IntegerToIndentationConverter x:Key="IntToIndConverter" />
+
+        <local:GlyphConverter x:Key="ExpandCollapseGlyphConverter"
+                              CollapsedGlyph="&#xE76C;"
+                              ExpandedGlyph="&#xE70D;" />
+    </UserControl.Resources>
+
+    <tvs:TreeView x:Name="TreeView"
+                  IsItemClickEnabled="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  ItemClick="TreeView_ItemClick"
+                  AllowDrop="False"
+                  CanDrag="False"
+                  CanDragItems="False"
+                  CanReorderItems="False">
+        <tvs:TreeView.ItemTemplate>
+            <DataTemplate x:DataType="tvs:TreeNode">
+                <Grid Margin="{Binding Depth, Mode=OneWay, Converter={StaticResource IntToIndConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="36" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <FontIcon x:Name="ExpandCollapseChevron"
+                              Margin="12,0"
+                              VerticalAlignment="Center"
+                              FontSize="12"
+                              Glyph="{x:Bind IsExpanded, Mode=OneWay, Converter={StaticResource ExpandCollapseGlyphConverter}}"
+                              x:Load="{x:Bind HasItems, Mode=OneWay}" />
+
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="20" Source="{Binding Data.Image, Mode=OneWay}" />
+                            <TextBlock Margin="12,0,24,0" Text="{Binding Data.Name, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </tvs:TreeView.ItemTemplate>
+        <tvs:TreeView.ItemContainerStyle>
+            <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}" />
+        </tvs:TreeView.ItemContainerStyle>
+    </tvs:TreeView>
+</UserControl>

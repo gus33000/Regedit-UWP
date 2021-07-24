@@ -19,36 +19,6 @@ namespace Regedit
         public MainPage()
         {
             this.InitializeComponent();
-
-            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            if (coreTitleBar != null)
-            {
-                coreTitleBar.ExtendViewIntoTitleBar = true;
-                coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-            }
-
-            // Set XAML element as a draggable region.
-            Window.Current.SetTitleBar(AppTitleBar);
-
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            if (titleBar != null)
-            {
-                // Set active window colors
-                titleBar.BackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonHoverBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonPressedBackgroundColor = Windows.UI.Colors.Transparent;
-
-                // Set inactive window colors
-                titleBar.InactiveBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
-            }
-        }
-
-        private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
-        {
-            AppTitleBar.Height = sender.Height;
         }
 
         private string GetRegistryString(RegistryHive hive, string path, string valuename)
@@ -71,18 +41,6 @@ namespace Regedit
 
             AboutContentDialog dialog = new(osname, RegisteredOwner, RegisteredOrganization, osversion, vers);
             await dialog.ShowAsync();
-        }
-
-        private void RegistryTree_Expanding(Microsoft.UI.Xaml.Controls.TreeView sender, Microsoft.UI.Xaml.Controls.TreeViewExpandingEventArgs args)
-        {
-            Item item = (Item)args.Item;
-            Data.ItemExpanded(item, SynchronizationContext.Current);
-        }
-
-        private void RegistryTree_ItemInvoked(Microsoft.UI.Xaml.Controls.TreeView sender, Microsoft.UI.Xaml.Controls.TreeViewItemInvokedEventArgs args)
-        {
-            Item item = (Item)args.InvokedItem;
-            Data.ItemInvoked(item);
         }
     }
 }
