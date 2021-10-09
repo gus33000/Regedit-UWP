@@ -8,7 +8,8 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:Windows10FallCreatorsUpdate="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
       xmlns:Windows10FallCreatorsUpdate1="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
-      xmlns:local1="using:Regedit.RegistryTreeView" xmlns:controls1="using:Regedit.Controls"
+      xmlns:local1="using:Regedit.RegistryTreeView"
+      xmlns:controls1="using:Regedit.Controls"
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       mc:Ignorable="d">
 
@@ -17,8 +18,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Rectangle Fill="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}" />
 
         <controls1:TitlebarControl />
 
@@ -34,8 +33,7 @@
             </Grid.ColumnDefinitions>
 
             <muxc:MenuBar Grid.Row="0"
-                          Grid.ColumnSpan="2"
-                          Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+                          Grid.ColumnSpan="2">
                 <muxc:MenuBarItem Title="File">
                     <Windows10FallCreatorsUpdate:MenuBarItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="F" Modifiers="Menu" />
@@ -300,6 +298,8 @@
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
+
+            <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
 
             <TextBox x:Name="PathTextBox"
                      Grid.Row="1"
